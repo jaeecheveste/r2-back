@@ -1,0 +1,67 @@
+openapi: 3.0.3
+info:
+  title: R2 BACKEND API
+  description: API provides endpoints for performing some operations.
+  contact:
+    name: Ezequiel
+  version: "1.0.0"
+servers:
+  - url: http://localhost:8080/r2/v1
+    description: Local
+tags:
+  - name: Fibonacci
+    description: Controller for managing fibonacci operations
+paths:
+  # integration routes
+  /spiral:
+    get:
+      tags:
+        - Fibonacci
+      summary: "Returns an spiral of fibonacci sucesion"
+      description: ""
+      operationId: "All"
+      parameters:
+        - in: query
+          name: rows
+          required: true
+          schema:
+            type: integer
+        - in: query
+          name: cols
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: "object"
+                    properties:
+                      rows:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/SpiralResponse'
+                      ts:
+                        type: string
+        default:
+          $ref: '#/components/responses/default'
+
+components:
+  responses:
+    default:
+      description: Unexpected Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+    SpiralResponse:
+      type: array
+      items:
+        type: number
+        
