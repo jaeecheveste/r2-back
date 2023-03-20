@@ -4,9 +4,9 @@
 
 Install the dependencies and start the server.
 
+(inside project directory)
 Run in docker:
 ```sh
-(inside project directory)
 docker build . -t r2-back 
 docker run --name r2-back -p 8080:8080 -d r2-back    
 ```
@@ -16,6 +16,10 @@ go mod download
 go run cmd/main.go
 ```
 
+## API DOCUMENTATION
+```sh
+Please go to http://localhost:8080/r2/v1/swagger/index.html
+```
 ## App Structure_
 ```sh
  - pkg
