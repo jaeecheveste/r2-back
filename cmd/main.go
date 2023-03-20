@@ -52,5 +52,5 @@ func main() {
 		log.Error(err)
 		panic(exitCode(1))
 	}
-	log.Info("Closing!")
+	log.Info("Ternminating server!")
 }
